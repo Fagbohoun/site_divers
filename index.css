@@ -1,0 +1,44 @@
+
+.container .card
+{
+
+    margin-top:19px;
+}
+.container-me{
+    z-index: 1;
+    background-image: url("img/imageba.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: auto;
+    margin: 3px 32px;
+
+}
+.container-me .container .card .card-header h5{
+    text-transform: uppercase;
+    padding: 9px;
+    color: rgba(157, 42, 165, 0.818);
+}
+
+.container-me .container .col-4
+{
+    z-index: 4;
+    padding-top: 16px;
+}
+.container-me .container .card-text p
+{
+    text-align: center;
+    font-size: 16px;
+    color:rgb(34, 101, 96);
+    padding-top: 4px;
+}
+.container-me .container .col-4 img:hover
+{
+    position: relative;
+    transition: all ease 6ms;
+    background-color: #eaeaea;
+    box-shadow: 0.7;
+    opacity: 0.9;
+}
+

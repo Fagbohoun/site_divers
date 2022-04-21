@@ -1,0 +1,57 @@
+@media(max-width:576px){
+    .container .col-6 img 
+    {
+        display: none;
+    }
+    .container #form_id
+    {
+        max-width: 575px;
+        position: relative;
+        margin: auto;
+       
+    }
+   
+}
+.container .col-6 img 
+    {
+        width: 530px;
+        height: 400px;
+        border-radius: 100%;
+
+    }
+    .container{
+        margin: 60px;
+
+    }
+    .container h4
+    {
+        text-transform: uppercase;
+        font-size: large;
+        color: rgba(157, 42, 165, 0.818);
+
+    }
+    .container .form-group button
+    {
+        margin: 12px 0px;
+
+    }
+    @media(max-width:768px){
+        .container .col-6 img 
+        {
+            display: none;
+        }
+        .container form .row
+
+        {
+            width: 700px;
+            margin-left: 0px;
+            position: relative;
+    
+        }
+       
+    }
+    form .form-group .danger p
+    {
+        font-style: italic;
+        color:red ;
+    }
