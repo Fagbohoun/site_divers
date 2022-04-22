@@ -37,19 +37,34 @@
     
     if( isset($nom) AND isset($prenom) AND isset($email) AND filter_var($email, FILTER_VALIDATE_EMAIL )AND isset($pass))
     {
-        $prepre_db= $connect_db->prepare( 'INSERT INTO clients  VALUES (NULL, :nom, :prenom, :mail, :tel, :passwords)');
-        $prepre_db-> bindValue('nom', $nom, PDO::PARAM_STR);
-        $prepre_db-> bindValue('prenom', $prenom, PDO::PARAM_STR);
-        $prepre_db-> bindValue('mail', $email, PDO::PARAM_STR);
-        $prepre_db-> bindValue('tel', $tel, PDO::PARAM_INT);
-        $prepre_db-> bindValue('passwords', password_hash($pass, PASSWORD_DEFAULT) , PDO::PARAM_STR);
-        $validate_confirm= $prepre_db->execute();
-
+        if(preg_match("#^[a-z0-9-.]+@[a-z]{2,7}\.[a-z]{2,4}$#" , $email) )
+        {   
+            if(strlen($pass)>=8){
+                if( preg_match("#^[A-Z]{1}[a-zA-Z]+[0-9]{1,10}[@?$%!]{1,3}$#", $pass))
+                {
+                    
+                $prepre_db= $connect_db->prepare( 'INSERT INTO clients  VALUES (NULL, :nom, :prenom, :mail, :tel, :passwords)');
+                $prepre_db-> bindValue('nom', $nom, PDO::PARAM_STR);
+                $prepre_db-> bindValue('prenom', $prenom, PDO::PARAM_STR);
+                $prepre_db-> bindValue('mail', $email, PDO::PARAM_STR);
+                $prepre_db-> bindValue('tel', $tel, PDO::PARAM_INT);
+                $prepre_db-> bindValue('passwords', password_hash($pass, PASSWORD_DEFAULT) , PDO::PARAM_STR);
+                $validate_confirm= $prepre_db->execute();
+                }else
+                {
+                    return header('Location:password_location.php');
+                }
+            }      
+        }
+        else 
+        {
+            return header("Location:mail.php");
+        }
     }        
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,11 +75,8 @@
         
                     
 <?php if(isset($validate_confirm)):?>
-                    <?php include_once( "index.php" );?>
-                        <?php endif;?>
-                        <?php if(!isset($validate_confirm)):?>
-                    <?php include_once( "inscription.php" );?>
-                        <?php endif;?>
+                    <?php include_once("index_ci.php");?>
+<?php endif;?>
                         
 </body>
 </html>

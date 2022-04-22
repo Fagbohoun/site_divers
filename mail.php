@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -19,7 +20,10 @@
                     </div>
                     <div class="col-6 col-sm-12 col-md-6 col-lg-6 " id="form_id">
                         <h4>Inscrivez-Vous:</h4>
-                       
+                        <div class="alert alert-danger">
+                                <p>Le format de votre mail est incorrect</p>
+                                
+                        </div>
                         <form action="inscription_valide.php" method="post">
                             <div class="form-group">
                                 <label>Nom:</label>
@@ -32,7 +36,6 @@
                             <div class="form-group">
                                 <label>E-mail:</label>
                                 <input type="email" class="form-control" placeholder="Votre email" required name="votre_email">
-                                 <i class="danger" style="color:red; font-style:italic; ">Vous etes deja inscire avec cet Email</i>
                             </div>
                             <div class="form-group">
                                 <label >Tel:</label>
@@ -54,3 +57,4 @@
             </div>
     </body>
     </html>
+

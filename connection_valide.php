@@ -16,17 +16,13 @@
                                     if(password_verify($my_passe, $valeur['paswd']))
                                         {
                                             $user_login= ['email'=> $valeur['emails'], 'passe'=> $valeur['paswd']];
+                                            $_SESSION['LOGGED_USER']=$user_login;
+                                            $_SESSION['id']=$valeur['id'];
 
-                                        }
-                                        else
-                                            {
-                                                $error_message= sprintf(" Cet email ou password est incorrect");
-                                            }
-                                
+                                        } 
                                 }
                         }
-                        $_SESSION['LOGGED_USER']=$valeur['emails'];
-                        $_SESSION['id']=$valeur['id'];
+                       
                 }
         }
 
