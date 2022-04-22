@@ -1,8 +1,6 @@
 <?php 
     session_start();
 
-    
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -57,6 +55,7 @@
         </div>
 
     </div>
+            <?php include_once("index_produit.php");?>
 
     
 </body>

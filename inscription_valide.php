@@ -27,11 +27,12 @@
         {
             if($my_values['emails']===$_POST['votre_email'])
             {
-                
+                $_SESSION['logged']= $my_values['emails']  ;
                 return header("Location:inscription_return.php");
             }
             
-        }                
+        } 
+                       
     }
     
     if( isset($nom) AND isset($prenom) AND isset($email) AND filter_var($email, FILTER_VALIDATE_EMAIL )AND isset($pass))
@@ -64,7 +65,6 @@
                         <?php if(!isset($validate_confirm)):?>
                     <?php include_once( "inscription.php" );?>
                         <?php endif;?>
-            
                         
 </body>
 </html>

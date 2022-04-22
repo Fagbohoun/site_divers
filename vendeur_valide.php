@@ -1,6 +1,8 @@
 
 <?php 
 include_once("pdo.php");
+if( $_SESSION['logged'] OR $_SESSION['LOGGED_USER'] )
+{
     if( isset($_FILES['imageFile']))
     {
         $name= $_POST['resto_name'];
@@ -56,7 +58,11 @@ include_once("pdo.php");
     }
     }
 
-    
+}else
+{
+    return header("Location:redirection.php");
+}
+
    
 ?>
 <!DOCTYPE html>

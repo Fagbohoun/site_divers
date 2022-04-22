@@ -1,5 +1,6 @@
 <?php
     include_once("pdo.php");
+    session_start();
        if ( isset($_POST['votre_email'])  AND filter_var($_POST['votre_email'] , FILTER_VALIDATE_EMAIL) AND isset(  $_POST["votre_passe"]))
         {
         $sql= $connect_db->prepare("SELECT emails, paswd FROM clients");
@@ -15,6 +16,7 @@
                                     if(password_verify($my_passe, $valeur['paswd']))
                                         {
                                             $user_login= ['email'=> $valeur['emails'], 'passe'=> $valeur['paswd']];
+
                                         }
                                         else
                                             {
@@ -23,6 +25,8 @@
                                 
                                 }
                         }
+                        $_SESSION['LOGGED_USER']=$valeur['emails'];
+                        $_SESSION['id']=$valeur['id'];
                 }
         }
 
