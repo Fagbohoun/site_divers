@@ -1,6 +1,5 @@
 <?php
     include_once("pdo.php");
-    session_start();
        if ( isset($_POST['votre_email'])  AND filter_var($_POST['votre_email'] , FILTER_VALIDATE_EMAIL) AND isset(  $_POST["votre_passe"]))
         {
         $sql= $connect_db->prepare("SELECT emails, paswd FROM clients");
@@ -17,8 +16,7 @@
                                         {
                                             $user_login= ['email'=> $valeur['emails'], 'passe'=> $valeur['paswd']];
                                             $_SESSION['LOGGED_USER']=$user_login;
-                                            $_SESSION['id']=$valeur['id'];
-
+                                        
                                         } 
                                 }
                         }
@@ -40,11 +38,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
         
-            <?php if(isset($user_login)):?>
-                <?php include_once("index.php");?>
+            <?php if(isset( $_SESSION['LOGGED_USER'])):?>
+                <?php include_once("index_ci.php");?>
                 <?php endif;?>
 
-                <?php if(!isset($user_login)):?>
+                <?php if(!isset( $_SESSION['LOGGED_USER'])):?>
                     <div class="container">
                 <div class="row" >
                     <div class="col-6 w-75% " id="form_id">

@@ -19,10 +19,7 @@
                 <li> <a href="">Contacter-Nous</a> </li>
 
             </ul>
-            <div class="btn">
-                <a href="inscription.php" role="button" class="btn btn-success">S'incrire</a>
-                <a href="connection.php" role="button" class="btn btn-info">Se connecter</a>
-            </div>
+            
         </nav>
     
 </body>

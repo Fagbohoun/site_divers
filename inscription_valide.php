@@ -4,7 +4,6 @@
     $email=$_POST['votre_email'];
     $tel=$_POST['num'];
     $pass=$_POST['votre_passe'];
-    
     try
     {
         $connect_db =new PDO ('mysql:host=localhost; dbname=commerciale_db', 'root', 'root');
@@ -17,7 +16,6 @@
     }
     if( isset($nom) AND isset($prenom) AND isset($email) AND filter_var($email, FILTER_VALIDATE_EMAIL )AND isset($pass))
     {
-        $message_erreur="Le emails existe deja connecté sur avec le boutton connection";
         $sql_select= " SELECT emails FROM clients ";
         $select= $connect_db->prepare($sql_select);
         $isOK=$select->execute();
@@ -27,7 +25,6 @@
         {
             if($my_values['emails']===$_POST['votre_email'])
             {
-                $_SESSION['logged']= $my_values['emails']  ;
                 return header("Location:inscription_return.php");
             }
             
@@ -39,10 +36,8 @@
     {
         if(preg_match("#^[a-z0-9-.]+@[a-z]{2,7}\.[a-z]{2,4}$#" , $email) )
         {   
-            if(strlen($pass)>=8){
-                if( preg_match("#^[A-Z]{1}[a-zA-Z]+[0-9]{1,10}[@?$%!]{1,3}$#", $pass))
-                {
-                    
+            if(strlen($pass>=8))
+            {
                 $prepre_db= $connect_db->prepare( 'INSERT INTO clients  VALUES (NULL, :nom, :prenom, :mail, :tel, :passwords)');
                 $prepre_db-> bindValue('nom', $nom, PDO::PARAM_STR);
                 $prepre_db-> bindValue('prenom', $prenom, PDO::PARAM_STR);
@@ -50,18 +45,20 @@
                 $prepre_db-> bindValue('tel', $tel, PDO::PARAM_INT);
                 $prepre_db-> bindValue('passwords', password_hash($pass, PASSWORD_DEFAULT) , PDO::PARAM_STR);
                 $validate_confirm= $prepre_db->execute();
-                }else
+                if($validate_confirm)
                 {
-                    return header('Location:password_location.php');
-                }
-            }      
-        }
-        else 
+                    $_SESSION['confirm']=['email'=>$email, 'pass'=>password_hash($pass, PASSWORD_DEFAULT) ];
+                }        
+            }   else
+            {
+                return header('Location:password_location.php');
+            }   
+        }else 
         {
             return header("Location:mail.php");
         }
+        
     }        
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -71,12 +68,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-        
-                    
-<?php if(isset($validate_confirm)):?>
-                    <?php include_once("index_ci.php");?>
-<?php endif;?>
-                        
+<body>               
+<?php if(isset($_SESSION['confirm'])):?>
+         <?php include_once("index_ci.php");?>
+<?php endif;?>                  
 </body>
 </html>

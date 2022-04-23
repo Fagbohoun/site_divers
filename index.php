@@ -1,4 +1,11 @@
+<?php
+  session_start();
+  $_SESSION['logged']=[];
+  $_SESSION['LOGGED_USER']=[];
+  $_SESSION['id']=[];
+  $_SESSION['confirm']=[];
 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
