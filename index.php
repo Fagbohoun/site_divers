@@ -57,6 +57,9 @@
         </div>
 
     </div>
+    <div class="container">
+        <?php include_once("produits.php");?>
+    </div>
 
     
 </body>

@@ -18,10 +18,10 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <?php foreach( $table_general as $table ):?>
+    
 
-<div class="container" >
-            <div class="row">
+<div class="container" <?php foreach( $table_general as $table ):?>>
+            <div class="row " >
             <div class="col-lg-3 col-md-3 col-sm-12">
                     <div class="card">
                         <div class="card-top-img">
@@ -37,12 +37,11 @@
                             <p><?php echo "Prix: ". $table['price'] ."FCFA";?></p>
                         </div>
                     </div>
-                </div>
+                </div <?php endforeach;?>>
 
-            </div>
+            </div  >
                
- </div>
-        
-        <?php endforeach;?>
+ </div  >
+      
 </body>
 </html>
