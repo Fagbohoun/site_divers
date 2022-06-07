@@ -1,6 +1,5 @@
         
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -30,13 +29,8 @@
             <div class="form-group">
                 <label for="">Explication</label>
                 <textarea name="comment" id="comment" cols="15" rows="15" placeholder="detaillé votre service ici" class="form-control"></textarea>
-            </div>
-
-           
+            </div>    
             <button class="btn btn-secondary mt-2" type="submit" >Envoyer</button>
         </form>
 </body>
-
 </html>
-
-   
