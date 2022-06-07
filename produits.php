@@ -20,8 +20,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     
 
-<div class="container" <?php foreach( $table_general as $table ):?>>
-            <div class="row " >
+<div class="container" >
+            <div class="row " <?php foreach( $table_general as $table ):?> >
             <div class="col-lg-3 col-md-3 col-sm-12">
                     <div class="card">
                         <div class="card-top-img">
@@ -35,6 +35,8 @@
                            <p><?php echo $table['commentaire'];?></p> 
     </br>
                             <p><?php echo "Prix: ". $table['price'] ."FCFA";?></p>
+                            <button type="submit" class="btn btn-info mt-1 mx-1">Acheter</button>
+                
                         </div>
                     </div>
                 </div <?php endforeach;?>>

@@ -69,7 +69,7 @@ include_once("pdo.php");
 </head>
 <body>
     <?php if(isset($trplt) ):?>
-        <?php echo "Images uploadée ";?>
+        <?php include_once("produit_ajout.php");?>
         <?php else: echo "echec d'envoie d'image";?>
     <?php endif;?>
     

@@ -1,6 +1,4 @@
-        
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -32,11 +30,12 @@
                 <textarea name="comment" id="comment" cols="15" rows="15" placeholder="detaillé votre service ici" class="form-control"></textarea>
             </div>
 
-           
-            <button class="btn btn-secondary mt-2" type="submit" >Envoyer</button>
+           <div class="form-group">
+           <button class="btn btn-warning mt-2" type="submit" >Modification</button>
+            <button class="btn btn-danger mt-2" type="submit" >Supprimer</button>
+           </div>
+
         </form>
 </body>
 
 </html>
-
-   
